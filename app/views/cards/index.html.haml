@@ -1,0 +1,11 @@
+%ul
+  - card_groups.each do |group|
+    %li
+      %h1= group.name
+      %ul
+        - group.card_sets.each do |set|
+          %li
+            %h2= set.name
+            %ol
+              - set.cards.each do |card|
+                %li= link_to card.name, card

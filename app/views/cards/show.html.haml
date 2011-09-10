@@ -1,0 +1,27 @@
+%h1= card.name
+
+%img{src: card_image_url(card)}
+
+%p
+  %span.label Group
+  #{card.card_group.name}
+
+%p
+  %span.label Set
+  #{card.card_set.name}
+
+%p
+  %span.label Type
+  #{card.card_type}
+
+%p
+  %span.label Mana
+  #{card.mana}
+
+%p
+  %span.label Rarity
+  #{card.rarity}
+
+%p
+  %span.label Description
+  #{card.description}
