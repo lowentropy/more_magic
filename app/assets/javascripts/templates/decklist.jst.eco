@@ -1,0 +1,5 @@
+<ul id="decks">
+  <% @decks.each (deck) -> %>
+    <li><a href='#'><%= deck.name %></a></li>
+  <% end %>
+</ul>

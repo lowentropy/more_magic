@@ -1,0 +1,2 @@
+<h1>Your Collection</h1>
+<%= @copies.total_cards() %> cards

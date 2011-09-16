@@ -1,0 +1,10 @@
+%h1 Your collection
+
+- if collection.decks.any?
+  %h2 Decks
+  %ul
+    - collection.decks.each do
+      %li= link_to deck.name, deck
+
+%p= link_to "Create new deck", new_deck_path
+%p= link_to "Left over cards", collection.left_over

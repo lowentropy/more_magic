@@ -1,4 +1,5 @@
 %h1= card.name
+%h2= "##{card.num}"
 
 %img{src: card_image_url(card)}
 
@@ -8,7 +9,9 @@
 
 %p
   %span.label Set
-  #{card.card_set.name}
+  - if card.card_set.on_gatherer?
+    = card_set_image card
+  #{card.card_set.name} (#{card.card_set.code})
 
 %p
   %span.label Type
@@ -16,8 +19,13 @@
 
 %p
   %span.label Mana
-  #{card.mana}
+  - card.mana_symbols.each do |symbol|
+    %img{src: symbol_image_url(symbol)}
 
+%p
+  %span.label CMC
+  #{card.cmc}
+  
 %p
   %span.label Rarity
   #{card.rarity}
@@ -25,3 +33,18 @@
 %p
   %span.label Description
   #{card.description}
+
+- if card.other_versions.any?
+  %h2 Other versions in this set
+  %ul
+    - card.other_versions.each do |other|
+      %li= link_to "#{other.name} ##{other.num}", other
+
+- if card.other_editions.any?
+  %h2 Other editions of this card
+  %ul
+    - card.other_editions.each do |other_card|
+      %li
+        %a{href: card_path(other_card)}
+          = card_set_image other_card
+          #{other_card.card_set.name}

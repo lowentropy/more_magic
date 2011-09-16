@@ -7,7 +7,13 @@ class CardsController < ApplicationController
   expose(:cards) { Card.scoped }
   
   expose(:query) { params[:q] }
-  expose(:search_results) { cards.where("name LIKE ?", "%#{query}%") }
+  
+  expose(:search_results) do
+    cards.
+      group(:name).
+      order("length(name)", :name).
+      where("name LIKE ?", like_clause)
+  end
   
   def index
     respond_with card_groups
@@ -19,6 +25,16 @@ class CardsController < ApplicationController
   
   def search
     respond_with search_results
+  end
+  
+  def set_examples
+    respond_with card_groups
+  end
+
+private
+
+  def like_clause
+    "%#{query.split('').join('%')}%"
   end
 
 end

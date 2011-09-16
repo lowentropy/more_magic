@@ -1,0 +1,10 @@
+%ul
+  - card_groups.each do |group|
+    %li
+      %h1= group.name
+      %ul
+        - group.card_sets.each do |set|
+          - next if set.cards.count == 0
+          %li
+            #{set.name}:
+            = link_to set.cards.first.name, set.cards.first

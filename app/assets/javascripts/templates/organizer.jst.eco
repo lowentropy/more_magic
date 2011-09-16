@@ -1,0 +1,9 @@
+<ul>
+  <% @copies.each (copy) -> %>
+    <li>
+      <% card = copy.get 'card' %>
+      <% console.log(card) %>
+      <%= copy.count %>x <%= card?.name %>
+    </li>
+  <% end %>
+</ul>

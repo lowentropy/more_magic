@@ -1,5 +1,11 @@
 Magic::Application.routes.draw do
   resources :cards do
-    get :search, :on => :collection
+    collection do
+      get :search, :set_examples
+    end
   end
+  resource :collection
+  resources :decks
+  resources :copies
+  root :to => 'home#index'
 end

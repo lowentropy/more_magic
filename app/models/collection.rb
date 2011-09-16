@@ -9,4 +9,10 @@ class Collection < ActiveRecord::Base
     dependent: :destroy
   
   after_create { create_left_over! }
+  
+  class << self
+    def only
+      first || create!
+    end
+  end
 end

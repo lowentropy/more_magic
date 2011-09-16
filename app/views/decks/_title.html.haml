@@ -1,0 +1,10 @@
+- if deck.left_over?
+  %h1 Left-over cards in collection
+- else
+  %h1= deck.name
+
+%h2
+  #{deck.num_cards} cards
+  #{" (plus #{deck.num_sideboard} in sideboard)" if deck.sideboard.any?}
+
+%p= link_to 'Back to collection', collection_path

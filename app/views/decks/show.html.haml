@@ -1,0 +1,12 @@
+= render 'title'
+
+= form_for deck, html: {class: 'deck'} do |f|
+  = f.submit 'Save Changes'
+  %ul
+    = f.fields_for :copies do |c|
+      %li.horizontal
+        = card_set_image c.object.card
+        = c.text_field :count, type: :number, class: 'count'
+        %a{href: card_path(c.object.card)}
+          #{c.object.card.name}
+          = card_image c.object.card, size: 'large', class: 'block'

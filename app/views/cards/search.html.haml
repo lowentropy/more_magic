@@ -2,4 +2,4 @@
 
 %ul
   - search_results.each do |card|
-    %li= link_to card.name, card
+    %li= link_to emphasize_letters(card.name, query), card
