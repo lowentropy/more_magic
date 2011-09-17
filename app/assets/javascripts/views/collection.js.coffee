@@ -1,6 +1,4 @@
-class App.Collection extends Backbone.View
-  
-  el: '#collection'
+class App.CardCollection extends Backbone.View
   
   initialize: ->
     @copies = new App.Copies

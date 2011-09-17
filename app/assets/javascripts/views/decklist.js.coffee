@@ -1,7 +1,5 @@
 class App.Decklist extends Backbone.View
   
-  el: 'decklist'
-  
   template: JST["templates/decklist"]
   
   initialize: (app) ->
@@ -9,4 +7,5 @@ class App.Decklist extends Backbone.View
     @app.decks.bind 'all', @render, this
   
   render: ->
+    @el = $ '#decklist'
     @el.html @template(@app)

@@ -1,7 +1,5 @@
 class App.Header extends Backbone.View
   
-  el: '#header'
-  
   template: JST['templates/header']
   
   initialize: (app) ->
@@ -9,4 +7,5 @@ class App.Header extends Backbone.View
     @app.copies.bind 'all', @render, this
     
   render: ->
-    $(@el).html @template(@app)
+    @el = $ '#header'
+    @el.html @template(@app)

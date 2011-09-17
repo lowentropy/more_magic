@@ -10,6 +10,7 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require_self
+//= require_tree ./helpers
 //= require_tree .
 
 window.App = {}
