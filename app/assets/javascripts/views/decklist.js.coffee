@@ -1,11 +1,13 @@
-class App.Decklist extends Backbone.View
+$ ->
+  class App.Decklist extends Backbone.View
   
-  template: JST["templates/decklist"]
+    template: JST["templates/decklist"]
   
-  initialize: (app) ->
-    @app = app
-    @app.decks.bind 'all', @render, this
+    el: '#decklist'
   
-  render: ->
-    @el = $ '#decklist'
-    @el.html @template(@app)
+    initialize: ->
+      @model.decks.bind 'all', @render, this
+  
+    render: ->
+      $(@el).html @template(@model)
+      this

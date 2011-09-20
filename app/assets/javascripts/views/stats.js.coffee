@@ -1,10 +1,10 @@
-class App.Stats extends Backbone.View
+$ ->
+  class App.Stats extends Backbone.View
   
-  template: JST['templates/stats']
+    template: JST['templates/stats']
   
-  initialize: (app) ->
-    @app = app
+    el: '#stats'
   
-  render: ->
-    @el = $ '#stats'
-    @el.html @template(@app)
+    render: ->
+      $(@el).html @template(@model)
+      this

@@ -1,11 +1,13 @@
-class App.Header extends Backbone.View
+$ ->
+  class App.Header extends Backbone.View
   
-  template: JST['templates/header']
+    template: JST['templates/header']
   
-  initialize: (app) ->
-    @app = app
-    @app.copies.bind 'all', @render, this
+    el: '#header'
+  
+    initialize: ->
+      @model.copies.bind 'all', @render, this
     
-  render: ->
-    @el = $ '#header'
-    @el.html @template(@app)
+    render: ->
+      $(@el).html @template(@model)
+      this

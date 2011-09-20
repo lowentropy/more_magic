@@ -1,0 +1,4 @@
+<input class="count" type="number" value="<%= @count %>" />
+<a href="/cards/<%= @card_id %>">
+  <%= @card.name %>
+</a>

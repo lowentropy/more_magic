@@ -1,5 +1,6 @@
-class App.Deck extends Backbone.Model
+$ ->
+  class App.Deck extends Backbone.Model
   
-  defaults: ->
-    name: ''
-    copies: []
+    defaults:
+      name: ''
+      copies: []

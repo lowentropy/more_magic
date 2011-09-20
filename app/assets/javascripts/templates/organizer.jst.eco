@@ -1,11 +1,2 @@
 <ul>
-  <%- foreach @copies, (copy) -> %>
-    <li>
-      <% card = copy.get 'card' %>
-      <input class="count" type="number" value="<%= copy.get('count') %>" />
-      <a href="/cards/<%= copy.get('card_id') %>">
-        <%= card.name %>
-      </a>
-    </li>
-  <% end %>
 </ul>

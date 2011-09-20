@@ -1,10 +1,10 @@
-class App.Sidebar extends Backbone.View
+$ ->
+  class App.Sidebar extends Backbone.View
   
-  template: JST['templates/sidebar']
+    template: JST['templates/sidebar']
   
-  initialize: (app) ->
-    @app = app
+    el: '#sidebar'
   
-  render: ->
-    @el = $ '#sidebar'
-    @el.html @template(@app)
+    render: ->
+      $(@el).html @template(@model)
+      this
