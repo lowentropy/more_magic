@@ -12,6 +12,11 @@ $ ->
       @stats = new App.Stats model: this
       @decklist = new App.Decklist model: this
       @organizer = new App.Organizer model: this
+      @card_sets = new App.CardSets
+      @card_sets.bind 'reset', @go, this
+      @card_sets.fetch()
+    
+    go: ->
       @copies.fetch()
 
     render: ->

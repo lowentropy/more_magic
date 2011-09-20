@@ -7,5 +7,6 @@ Magic::Application.routes.draw do
   resource :collection
   resources :decks
   resources :copies
+  resources :card_sets
   root :to => 'home#index'
 end

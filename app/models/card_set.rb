@@ -113,6 +113,10 @@ class CardSet < ActiveRecord::Base
     !!gatherer_code
   end
   
+  def as_json(*args)
+    super(*args).merge! gatherer_code: gatherer_code
+  end
+  
   def refresh name
     puts "set: #{name}"
     update_attributes! name: name

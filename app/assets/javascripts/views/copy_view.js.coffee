@@ -1,15 +1,16 @@
 $ ->
   class App.CopyView extends Backbone.View
   
-    template: Brace 'templates/copy'
+    template: JST['templates/copy']
   
     tagName: 'li'
+    className: 'horizontal'
   
     events:
       'change .count': 'change_count'
 
     render: ->
-      $(@el).html @template(@model)
+      $(@el).html @template(this)
       this
   
     get_count: ->
@@ -18,3 +19,18 @@ $ ->
   
     change_count: ->
       @model.save count: @get_count()
+    
+    card_set: ->
+      @model.card_set()
+    
+    card_set_image: ->
+      alt = "#{@card_set().get('name')} (#{@model.get('rarity')})"
+      url = @card_set().image_url rarity: @model.get('rarity')
+      "<img src='#{url}' alt='#{alt}' title='#{alt}' />"
+
+    card_image: (opts={}) ->
+      size = opts.size ? 'large'
+      css = "#{opts.css} card #{size}"
+      alt = @model.get 'name'
+      url = @model.image_url()
+      "<img src='#{url}' alt='#{alt}' title='#{alt}' class='#{css}' />"

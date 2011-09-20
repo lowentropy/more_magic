@@ -1,4 +1,7 @@
-<input class="count" type="number" value="<%= @count %>" />
-<a href="/cards/<%= @card_id %>">
-  <%= @card.name %>
+<% copy = @model.toJSON() %>
+<%- @card_set_image() %>
+<input class="count" type="number" value="<%= copy.count %>" />
+<a href="/cards/<%= copy.card_id %>">
+  <%= copy.card.name %>
+  <%- @card_image css: 'block' %>
 </a>
