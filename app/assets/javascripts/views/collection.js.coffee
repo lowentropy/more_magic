@@ -13,11 +13,16 @@ $ ->
       @decklist = new App.Decklist model: this
       @organizer = new App.Organizer model: this
       @card_sets = new App.CardSets
-      @card_sets.bind 'reset', @go, this
+      @card_search = new App.CardSearch
+      @bind_events()
       @card_sets.fetch()
     
-    go: ->
-      @copies.fetch()
-
-    render: ->
+    bind_events: ->
+      @card_sets.bind 'reset', @fetch_copies, this
+      @copies.bind 'reset', @render, this
     
+    fetch_copies: ->
+      @copies.fetch()
+    
+    render: ->
+      @card_search.render()
