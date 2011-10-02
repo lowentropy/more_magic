@@ -8,10 +8,16 @@ $ ->
   
     events:
       'change .count': 'change_count'
+    
+    initialize: ->
+      @model.bind 'change:count', @render_count, this
 
     render: ->
       $(@el).html @template(this)
       this
+    
+    render_count: ->
+      @$('.count').val @model.get('count')
   
     get_count: ->
       count = parseInt @$('.count').val()

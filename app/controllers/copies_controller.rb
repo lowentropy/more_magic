@@ -9,6 +9,15 @@ class CopiesController < ApplicationController
   end
   
   def update
+    if copy.count == 0
+      copy.destroy
+    else
+      copy.save
+    end
+    respond_with copy
+  end
+  
+  def create
     copy.save
     respond_with copy
   end

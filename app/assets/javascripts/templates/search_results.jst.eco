@@ -1,0 +1,14 @@
+<% if @results.size(): %>
+  <p><%= @results.size() %> results</p>
+  <ul>
+    <%- foreach @results, (card) -> %>
+      <li>
+        <a data-card-id="<%= card.get('id') %>" href="#" title="Add to collection">
+          <%= card.get 'name' %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% else if @search_text.length: %>
+  <p><i>No results to display</i></p>
+<% end %>

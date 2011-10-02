@@ -26,3 +26,7 @@ $ ->
     
     render: ->
       @card_search.render()
+    
+    copy_for_card: (card) ->
+      @copies.find (copy) ->
+        copy.get('card').id == card.get('id')

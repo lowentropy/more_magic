@@ -9,6 +9,7 @@ $ ->
       @list = @$ 'ul'
 
     render: ->
+      @el.html ''
       this
 
     add_one: (copy) ->

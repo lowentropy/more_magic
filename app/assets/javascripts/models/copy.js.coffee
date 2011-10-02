@@ -8,6 +8,10 @@ $ ->
       count: 0
       card: null
     
+    bump_count: ->
+      @set count: (@get('count') + 1)
+      @save()
+    
     card_name: ->
       @get('card')?.name
 

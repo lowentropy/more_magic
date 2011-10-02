@@ -34,7 +34,12 @@ class CardsController < ApplicationController
 private
 
   def like_clause
-    "%#{query.split('').join('%')}%"
+    "%#{query.split(query_splitter).join('%')}%"
+  end
+  
+  def query_splitter
+    # ''    # cmd-T style
+    /\s+/   # normal style
   end
 
 end
