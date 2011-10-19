@@ -12,11 +12,14 @@ class Price < ActiveRecord::Base
     def load_missing
       refresh_prices_for Card.includes(:price).all.reject(&:price)
     end
+    def zero
+      @zero ||= self.new(low: 0, mid: 0, high: 0)
+    end
     private
     def refresh_prices_for cards
       cards.each_with_index do |card, i|
         puts "#{i+1}/#{cards.size} #{card}"
-        card.price!.refresh!.save!
+        card.price!.refresh!.save! rescue nil
       end
     end
   end
@@ -28,9 +31,8 @@ class Price < ActiveRecord::Base
         self[attr] = $~[i+1].to_f
       end
     else
-      #raise "Can't parse result from tcgplayer.com:\n#{response}"
       puts "Can't parse result from tcgplayer.com:\n#{response}"
-      card.price = nil
+      raise "Can't parse result from tcgplayer.com:\n#{response}"
     end
     self
   end

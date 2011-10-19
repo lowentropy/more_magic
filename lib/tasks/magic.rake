@@ -3,4 +3,9 @@ namespace :magic do
   task :refresh => :environment do
     CardGroup.refresh
   end
+  
+  desc "Refresh card prices for all cards"
+  task :prices => :environment do
+    Price.refresh_all!
+  end
 end

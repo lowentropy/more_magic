@@ -46,7 +46,7 @@ class Deck < ActiveRecord::Base
   end
   
   def price
-    copies.sum &:price
+    copies.all.sum Price.zero, &:price
   end
   
   memoize :price

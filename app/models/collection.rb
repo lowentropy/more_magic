@@ -19,7 +19,7 @@ class Collection < ActiveRecord::Base
   end
   
   def price
-    decks.sum(&:price) + left_over.price
+    decks.all.sum(Price.zero, &:price) + left_over.price
   end
   
   memoize :price
