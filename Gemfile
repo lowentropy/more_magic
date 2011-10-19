@@ -16,3 +16,7 @@ group :assets do
   gem 'rails-backbone'
   gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 end
+
+group :test do
+  gem 'rspec-rails'
+end

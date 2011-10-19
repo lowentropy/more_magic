@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910185628) do
+ActiveRecord::Schema.define(:version => 20111019194638) do
 
   create_table "card_groups", :force => true do |t|
     t.string   "name"
@@ -72,5 +72,14 @@ ActiveRecord::Schema.define(:version => 20110910185628) do
   end
 
   add_index "decks", ["collection_id"], :name => "index_decks_on_collection_id"
+
+  create_table "prices", :force => true do |t|
+    t.integer  "card_id"
+    t.decimal  "low",        :precision => 7, :scale => 2
+    t.decimal  "mid",        :precision => 7, :scale => 2
+    t.decimal  "high",       :precision => 7, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

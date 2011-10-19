@@ -1,9 +1,15 @@
 class Copy < ActiveRecord::Base
+  extend ActiveSupport::Memoizable
+  
   belongs_to :deck
   belongs_to :card
   
   scope :sideboard, where(sideboard: true)
   scope :cards, where(sideboard: false)
+  
+  def price
+    card.price! * count
+  end
   
   class << self
     def find_by_description desc, set_map=nil
@@ -23,4 +29,6 @@ class Copy < ActiveRecord::Base
       new({sideboard: false}.merge params)
     end
   end
+  
+  memoize :price
 end

@@ -1,4 +1,6 @@
 class Deck < ActiveRecord::Base  
+  extend ActiveSupport::Memoizable
+  
   belongs_to :collection
   has_many :copies, :include => :card, :order => 'cards.name'
   
@@ -42,4 +44,10 @@ class Deck < ActiveRecord::Base
     end
     save!
   end
+  
+  def price
+    copies.sum &:price
+  end
+  
+  memoize :price
 end

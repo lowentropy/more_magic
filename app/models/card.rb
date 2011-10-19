@@ -1,6 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :card_set
   belongs_to :deck
+  has_one :price
   
   delegate :card_group, to: :card_set
   delegate :collection, to: :deck
@@ -60,6 +61,14 @@ class Card < ActiveRecord::Base
     end
   end
   
+  def to_s
+    "#{name} (#{card_set.code})"
+  end
+  
+  def price!
+    price || build_price
+  end
+
   alias :cmc :converted_mana_cost
   
   memoize :mana_symbols, :converted_mana_cost, :other_versions, :other_editions

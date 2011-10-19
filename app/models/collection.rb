@@ -1,4 +1,6 @@
 class Collection < ActiveRecord::Base
+  extend ActiveSupport::Memoizable
+  
   has_many :decks,
     dependent: :destroy,
     conditions: {left_over: false}
@@ -15,4 +17,10 @@ class Collection < ActiveRecord::Base
       first || create!
     end
   end
+  
+  def price
+    decks.sum(&:price) + left_over.price
+  end
+  
+  memoize :price
 end
