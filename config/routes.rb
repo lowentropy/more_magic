@@ -4,7 +4,9 @@ Magic::Application.routes.draw do
       get :search, :set_examples
     end
   end
-  resource :collection
+  resource :collection do
+    get :price
+  end
   resources :decks
   resources :copies
   resources :card_sets

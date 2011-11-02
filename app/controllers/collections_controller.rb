@@ -9,4 +9,8 @@ class CollectionsController < ApplicationController
     respond_with collection
   end
   
+  def price
+    respond_with collection.price
+  end
+  
 end
